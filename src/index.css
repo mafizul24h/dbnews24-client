@@ -1,0 +1,5 @@
+
+.outlet-container {
+    min-height: 80vh;
+    /* min-vh-100 this is bootstrap min height  */
+}
