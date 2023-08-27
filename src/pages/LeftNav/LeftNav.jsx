@@ -8,7 +8,7 @@ const LeftNav = () => {
     // console.log(categories);
 
     useEffect(() => {
-        fetch('http://localhost:5000/categories')
+        fetch('https://dbnew24-server-mafizul24h.vercel.app/categories')
             .then(res => res.json())
             .then(data => setCategories(data))
             .catch(error => console.log(error))
