@@ -13,13 +13,16 @@ const Header = () => {
                 <img style={{height: "50px"}} src={logo} alt="" />
                 <p><span className='fw-bold'>{moment().format('dddd, ')}</span>{moment().format('MMMM D, YYYY')}</p>
             </div>
-            <NavigationBer />
+            {/* <NavigationBer /> */}
             <div className='d-flex align-items-center my-3 container'>
-                <Button variant="danger">Latest</Button>
+                <Button variant="danger">শিরোনাম</Button>
                 <Marquee pauseOnHover speed={40} className='bg-light py-2 text-danger'>
-                    I can be a React component, multiple React components, or just some text.
-                    I can be a React component, multiple React components, or just some text.
-                    I can be a React component, multiple React components, or just some text.
+                    <div className='d-flex g-4'>
+                        <p className='m-0 me-2'>সীতাকুণ্ডে রেলগেটে তিন পুলিশ সদস্য নিহতের ঘটনায় মামলা, আরও দুটি তদন্ত কমিটি গঠন| </p>
+                        <p className='m-0 me-2'>নতুন মিত্রের খোঁজে সেভাবে সাড়া পাচ্ছে না আওয়ামী লীগ | </p>
+                        <p className='m-0 me-2'>নেত্রকোনা মেডিকেল কলেজ ব্যবহারিকে ঘাটতি নিয়েই শিক্ষাজীবন শেষ | </p>
+                        <p className='m-0 me-2'>সাবেক ধর্মমন্ত্রী মতিউর রহমান আর নেই |</p>
+                    </div>
                 </Marquee>
             </div>
         </div>

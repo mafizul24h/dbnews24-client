@@ -6,7 +6,7 @@ import { Container } from 'react-bootstrap';
 const LoginLayout = () => {
     return (
         <Container>
-            <NavigationBer />
+            {/* <NavigationBer /> */}
             <div style={{minHeight: '80vh'}}>
             <Outlet />
             </div>

@@ -1,12 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 import { FaUserCircle } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import navLogo from './../../assets/logo/logo.png'
+import { useState } from 'react';
 
 const NavigationBer = () => {
+    const [categories, setCategories] = useState([]);
+    // console.log(categories);
     const { user, logOut } = useContext(AuthContext);
     // console.log(user);
 
@@ -16,18 +19,27 @@ const NavigationBer = () => {
                 toast.success('Logout Successfully');
             })
     }
+    
+    useEffect(() => {
+        fetch('https://dbnew24-server-mafizul24h.vercel.app/categories')
+            .then(res => res.json())
+            .then(data => setCategories(data))
+            .catch(error => console.log(error))
+    }, [])
 
     return (
         <div >
             <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
                 <Container>
-                    <Link to='/'><img style={{height: '40px'}} src={navLogo} alt='Logo' /></Link>
+                    <Link to='/category/0'><img style={{height: '40px'}} src={navLogo} alt='Logo' /></Link>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mx-auto">
-                            <Nav.Link href="#features"><Link to='/category/0'>Home</Link></Nav.Link>
-                            <Nav.Link href="#pricing">About</Nav.Link>
-                            <Nav.Link href="#career">Career</Nav.Link>
+
+                            {
+                               categories.map(category => <Link className='text-decoration-none me-2 btn btn-outline-secondary' to={category.id}>{category.name}</Link>) 
+                            }
+                            
                         </Nav>
                         <Nav className='d-flex align-items-center'>
                             {user && <Nav.Link href="#deets"><FaUserCircle style={{ fontSize: '40px' }} /></Nav.Link>}

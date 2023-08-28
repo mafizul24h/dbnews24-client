@@ -11,7 +11,7 @@ const Main = () => {
     return (
         <div>
             <Header />
-            {/* <NavigationBer /> */}
+            <NavigationBer />
             <div className='outlet-container my-4'>
                 <Container>
                     <Row>

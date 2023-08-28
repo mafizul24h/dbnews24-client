@@ -13,13 +13,13 @@ const LeftNav = () => {
             .then(data => setCategories(data))
             .catch(error => console.log(error))
     }, [])
+    
     return (
         <div className='overFlow'>
-            <h4>All Category</h4>
             <div>
                 {
-                    categories.map(category => <div key={category.id} className='py-2'>
-                        <Link to={`/category/${category.id}`} className='text-decoration-none text-dark'>{category.name}</Link>
+                    categories.map(category => <div key={category.id} className='pb-2'>
+                        <Link to={`/category/${category.id}`} className='text-decoration-none text-dark'><button type="button" class="btn btn-outline-secondary fw-bold w-100">{category.name}</button></Link>
                     </div>)
                 }
             </div>
