@@ -14,7 +14,7 @@ const LeftNav = () => {
             .catch(error => console.log(error))
     }, [])
     return (
-        <div>
+        <div className='overFlow'>
             <h4>All Category</h4>
             <div>
                 {

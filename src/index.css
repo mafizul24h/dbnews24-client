@@ -1,5 +1,18 @@
-
 .outlet-container {
     min-height: 80vh;
     /* min-vh-100 this is bootstrap min height  */
+}
+
+.overFlow {
+    position: sticky;
+    top: 1rem;
+    display: block !important;
+    /* height: calc(100vh - 7rem); */
+    height: calc(100vh - 1rem);
+    /* overflow-y: auto; */
+    overflow: auto;
+}
+
+@media only screen and (min-width: 576px) {
+
 }

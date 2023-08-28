@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 import { FaUserCircle } from 'react-icons/fa';
 import { toast } from 'react-toastify';
+import navLogo from './../../assets/logo/logo.png'
 
 const NavigationBer = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -17,14 +18,14 @@ const NavigationBer = () => {
     }
 
     return (
-        <Container>
+        <div >
             <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
                 <Container>
-                    <Navbar.Brand href="#home">The Dragon News</Navbar.Brand>
+                    <Link to='/'><img style={{height: '40px'}} src={navLogo} alt='Logo' /></Link>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mx-auto">
-                            <Nav.Link href="#features"><Link to='/'>Home</Link></Nav.Link>
+                            <Nav.Link href="#features"><Link to='/category/0'>Home</Link></Nav.Link>
                             <Nav.Link href="#pricing">About</Nav.Link>
                             <Nav.Link href="#career">Career</Nav.Link>
                         </Nav>
@@ -39,7 +40,7 @@ const NavigationBer = () => {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-        </Container>
+        </div>
     );
 };
 

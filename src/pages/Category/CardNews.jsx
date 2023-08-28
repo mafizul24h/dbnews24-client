@@ -13,7 +13,7 @@ const CardNews = ({ news }) => {
 
     return (
         <Card className='mb-2'>
-            <Card.Header className='d-flex align-items-center'>
+            {/* <Card.Header className='d-flex align-items-center'>
                 <div className='d-flex align-items-center gap-3 flex-grow-1'>
                     <Image style={{ height: '40px' }} src={author?.img} roundedCircle />
                     <div>
@@ -25,7 +25,7 @@ const CardNews = ({ news }) => {
                     <FaRegBookmark className='me-2 fs-4' />
                     <FaShareAlt className='fs-4' />
                 </div>
-            </Card.Header>
+            </Card.Header> */}
             <Card.Body>
                 <Card.Title>{title}</Card.Title>
                 <Card.Img variant="top" src={image_url} />
@@ -35,7 +35,8 @@ const CardNews = ({ news }) => {
             </Card.Body>
             <Card.Footer className='d-flex align-items-center'>
                 <div className='flex-grow-1 d-flex align-items-center gap-2'>
-                    <Rating style={{ maxWidth: 100 }} value={rating?.number} readOnly /> <span>{rating?.number}</span>
+                    <p className='mb-0'><small><b>Reporter:</b> {author?.name}</small></p>
+                    {/* <Rating style={{ maxWidth: 100 }} value={rating?.number} readOnly /> <span>{rating?.number}</span> */}
                 </div>
                 {/* <div className='flex-grow-1'>
                     <Rating
@@ -48,7 +49,8 @@ const CardNews = ({ news }) => {
                     {rating?.number}
                 </div> */}
                 <div>
-                    <FaEye className='me-2' /> {total_view}
+                    <p className='m-0'><small><b>Publish Date:</b> {moment(author?.published_date).format('YYYY-MM-D')}</small></p>
+                    {/* <FaEye className='me-2' /> {total_view} */}
                 </div>
             </Card.Footer>
         </Card>
