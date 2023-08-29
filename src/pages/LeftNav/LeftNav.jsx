@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Card } from 'react-bootstrap';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import LeftCard from './LeftCard';
 
 const LeftNav = () => {
     const [news, setNews] = useState([]);
-    console.log(news[0]);
+    // console.log(news[0]);
 
     useEffect(() => {
         fetch('https://dbnew24-server-mafizul24h.vercel.app/news')

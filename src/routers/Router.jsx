@@ -9,6 +9,8 @@ import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import PrivateRoute from "./PrivateRoute";
 import Trams from "../pages/Register/Trams";
+import Admin from "../adminPanel/Admin/Admin";
+import AddNews from "../adminPanel/AddNews/AddNews";
 
 const router = createBrowserRouter([
     {
@@ -53,6 +55,16 @@ const router = createBrowserRouter([
                 path: ':id',
                 element: <PrivateRoute><News /></PrivateRoute>,
                 loader: ({ params }) => fetch(`https://dbnew24-server-mafizul24h.vercel.app/news/${params.id}`)
+            }
+        ]
+    },
+    {
+        path: 'admin',
+        element: <Admin/>,
+        children: [
+            {
+                path: 'add-news',
+                element: <AddNews/>
             }
         ]
     }

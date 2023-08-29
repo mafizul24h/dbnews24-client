@@ -14,7 +14,7 @@ const News = () => {
             <Card >
                 <Card.Img variant="top" src={image_url && image_url} />
                 <Card.Body>
-                    <Card.Title>{title}</Card.Title>
+                    <Card.Title className='fw-bold text-success'>{title}</Card.Title>
                     <Card.Text>
                         {details && details}
                     </Card.Text>

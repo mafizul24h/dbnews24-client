@@ -13,9 +13,24 @@
     overflow: auto;
 }
 
-.hoverEffect:hover {
-    color: #2525e4;
-    text-decoration: underline;
+
+.active {
+    text-decoration: none;
+    margin-left: 10px; 
+    color: #FFF;
+    background: #63b363;
+    border: 1px solid #63b363;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.default {
+    text-decoration: none;
+    margin-left: 10px; 
+    color: #1d1c1c;
+    border: 1px solid #1d1c1c;
+    border-radius: 5px;
+    padding: 10px;
 }
 
 @media only screen and (min-width: 576px) {

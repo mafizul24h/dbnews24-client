@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, ListGroup } from 'react-bootstrap';
-import { FaGoogle, FaGithub, FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
+import { FaGoogle, FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 import QZone from '../QZone/QZone';
 
 const RightNav = () => {
@@ -8,8 +8,8 @@ const RightNav = () => {
         <div>
             <div>
                 <h4>Login With</h4>
-                <Button className='my-2' variant="outline-primary w-100"><FaGoogle /> Login With Google</Button>
-                <Button className='w-100' variant="outline-secondary"><FaGithub /> Login With Google</Button>
+                <Button className='my-2' variant="outline-secondary w-100"><FaGoogle /> Login With Google</Button>
+                <Button className='w-100' variant="outline-primary"><FaFacebook /> Login With Facebook</Button>
             </div>
             <div className='my-3'>
                 <h3>Find Us On</h3>
