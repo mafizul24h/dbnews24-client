@@ -4,26 +4,25 @@ import { Link, NavLink } from 'react-router-dom';
 import LeftCard from './LeftCard';
 
 const LeftNav = () => {
-    const [categories, setCategories] = useState([]);
-    // console.log(categories);
+    const [news, setNews] = useState([]);
+    console.log(news[0]);
 
     useEffect(() => {
-        fetch('https://dbnew24-server-mafizul24h.vercel.app/categories')
+        fetch('https://dbnew24-server-mafizul24h.vercel.app/news')
             .then(res => res.json())
-            .then(data => setCategories(data))
+            .then(data => setNews(data))
             .catch(error => console.log(error))
     }, [])
     
     return (
-        <div className='overFlow'>
-            <div>
+        <div>
+            <button className='my-2 fw-bold btn btn-outline-secondary w-100'>শিরোনাম</button>
+            <div className='mb-4 overFlow'>
                 {
-                    categories.map(category => <div key={category.id} className='pb-2'>
-                        <Link to={`/category/${category.id}`} className='text-decoration-none text-dark'><button type="button" class="btn btn-outline-secondary fw-bold w-100">{category.name}</button></Link>
-                    </div>)
+                   news.map(n => <p key={n._id} className='fw-bold'><Link to={`/news/${n._id}`} className='text-decoration-none text-dark h:text-blue-400'>{n.title}</Link></p>)
                 }
             </div>
-            <div className='my-2'>
+            <div className='my-2 d-none d-md-block'>
                 <LeftCard />
             </div>
         </div>

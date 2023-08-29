@@ -15,7 +15,7 @@ const Header = () => {
             </div>
             {/* <NavigationBer /> */}
             <div className='d-flex align-items-center my-3 container'>
-                <Button variant="danger">শিরোনাম</Button>
+                <Button variant="danger">সর্বশেষ</Button>
                 <Marquee pauseOnHover speed={40} className='bg-light py-2 text-danger'>
                     <div className='d-flex g-4'>
                         <p className='m-0 me-2'>সীতাকুণ্ডে রেলগেটে তিন পুলিশ সদস্য নিহতের ঘটনায় মামলা, আরও দুটি তদন্ত কমিটি গঠন| </p>
