@@ -43,7 +43,7 @@ const router = createBrowserRouter([
             {
                 path: ':id',
                 element: <Category />,
-                loader: ({ params }) => fetch(`https://dbnew24-server-mafizul24h.vercel.app/categories/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/categories/${params.id}`)
             }
         ]
     },
@@ -53,8 +53,8 @@ const router = createBrowserRouter([
         children: [
             {
                 path: ':id',
-                element: <PrivateRoute><News /></PrivateRoute>,
-                loader: ({ params }) => fetch(`https://dbnew24-server-mafizul24h.vercel.app/news/${params.id}`)
+                element: <News />,
+                loader: ({ params }) => fetch(`http://localhost:5000/news/${params.id}`)
             }
         ]
     },

@@ -1,15 +1,28 @@
-import React from 'react';
-import { useLoaderData, useParams } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { useLoaderData } from 'react-router-dom';
 import CardNews from './CardNews';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const Category = () => {
-    const { id } = useParams();
-    const categoryNews = useLoaderData();
+    const categoryNes = useLoaderData();
+    const { news } = useContext(AuthContext);
+    const [categoryNews, setCategoryNews] = useState([]);
+    // console.log(news);
+    // console.log(categoryNews);
+
+    useEffect(() => {
+        if (categoryNes.id == 0) {
+            setCategoryNews(news);
+        } else {
+            const newsCategory = news.filter(n => n.category == categoryNes.id);
+            setCategoryNews(newsCategory)
+        }
+    }, [categoryNes, news])
 
     return (
         <div>
             {
-                categoryNews.map(news => <CardNews key={news._id } news={news} />)
+                categoryNews.map(news => <CardNews key={news._id} news={news} />)
             }
         </div>
     );

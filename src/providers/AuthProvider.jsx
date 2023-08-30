@@ -8,6 +8,15 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [news, setNews] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:5000/news')
+            .then(res => res.json())
+            .then(data => {
+                setNews(data)
+            })
+    }, [])
 
     const createUser = (email, password) => {
         setLoading(true);
@@ -40,7 +49,8 @@ const AuthProvider = ({ children }) => {
         loading,
         createUser,
         signIn,
-        logOut
+        logOut,
+        news
     };
 
 

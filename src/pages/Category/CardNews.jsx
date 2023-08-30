@@ -8,7 +8,7 @@ import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
 
 const CardNews = ({ news }) => {
-    const { _id, title, author, image_url, details, rating, total_view } = news;
+    const { _id, title, reporter, photo, details, publish_date } = news;
     // console.log(news);
 
     return (
@@ -28,14 +28,14 @@ const CardNews = ({ news }) => {
             </Card.Header> */}
             <Card.Body>
                 <Card.Title className='fw-bold'>{title}</Card.Title>
-                <Card.Img variant="top" src={image_url} />
+                <Card.Img variant="top" src={photo} />
                 <Card.Text>
                     {details.length < 250 ? <>{details}</> : <>{details.slice(0, 250)}...<Link to={`/news/${_id}`}>Read More</Link></>}
                 </Card.Text>
             </Card.Body>
             <Card.Footer className='d-flex align-items-center'>
                 <div className='flex-grow-1 d-flex align-items-center gap-2'>
-                    <p className='mb-0'><small><b>Reporter:</b> {author?.name}</small></p>
+                    <p className='mb-0'><small><b>Reporter:</b> {reporter}</small></p>
                     {/* <Rating style={{ maxWidth: 100 }} value={rating?.number} readOnly /> <span>{rating?.number}</span> */}
                 </div>
                 {/* <div className='flex-grow-1'>
@@ -49,7 +49,7 @@ const CardNews = ({ news }) => {
                     {rating?.number}
                 </div> */}
                 <div>
-                    <p className='m-0'><small><b>Publish Date:</b> {moment(author?.published_date).format('YYYY-MM-D')}</small></p>
+                    <p className='m-0'><small><b>Publish Date:</b> {moment(publish_date).format('YYYY-MM-D')}</small></p>
                     {/* <FaEye className='me-2' /> {total_view} */}
                 </div>
             </Card.Footer>

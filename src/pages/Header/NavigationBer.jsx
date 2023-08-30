@@ -21,7 +21,7 @@ const NavigationBer = () => {
     }
     
     useEffect(() => {
-        fetch('https://dbnew24-server-mafizul24h.vercel.app/categories')
+        fetch('http://localhost:5000/categories')
             .then(res => res.json())
             .then(data => setCategories(data))
             .catch(error => console.log(error))
@@ -31,13 +31,13 @@ const NavigationBer = () => {
         <div >
             <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
                 <Container>
-                    <Link to='/category/0'><img style={{height: '40px'}} src={navLogo} alt='Logo' /></Link>
+                    <Link to='/category/0'><img style={{height: '40px', width: '100px'}} src={navLogo} alt='Logo' /></Link>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mx-auto">
 
                             {
-                               categories.map(category => <Link className='text-decoration-none me-2 btn btn-outline-secondary' to={category.id}>{category.name}</Link>) 
+                               categories.map(category => <Link className='text-decoration-none me-2 btn btn-outline-secondary btn-sm' to={category.id}>{category.name}</Link>) 
                             }
                             
                         </Nav>

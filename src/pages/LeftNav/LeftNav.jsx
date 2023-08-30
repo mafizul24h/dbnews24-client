@@ -8,7 +8,7 @@ const LeftNav = () => {
     // console.log(news[0]);
 
     useEffect(() => {
-        fetch('https://dbnew24-server-mafizul24h.vercel.app/news')
+        fetch('http://localhost:5000/news')
             .then(res => res.json())
             .then(data => setNews(data))
             .catch(error => console.log(error))
