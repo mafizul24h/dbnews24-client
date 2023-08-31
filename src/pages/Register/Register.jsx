@@ -1,11 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../providers/AuthProvider';
+import googleIcon from './../../assets/icons/google-icon.png'
+import { updateProfile } from 'firebase/auth';
 
 const Register = () => {
-    const {createUser} = useContext(AuthContext);
+    const { createUser, googleSignIn, setUser, setReload } = useContext(AuthContext);
     const [accept, setAccept] = useState(false);
     const [success, setSuccess] = useState();
     const [error, setError] = useState();
@@ -24,6 +26,8 @@ const Register = () => {
     const [errorConf, setErrorConf] = useState();
     const [successConf, setSuccessConf] = useState();
 
+    const navigate = useNavigate();
+
     const handleRegister = (event) => {
         event.preventDefault();
 
@@ -38,20 +42,35 @@ const Register = () => {
         const confirm = form.confirm.value;
         console.log(name, photo, email, password, confirm);
 
-        if(password !== confirm) {
+        if (password !== confirm) {
             toast.error('Password not match');
             return;
         }
 
         createUser(email, password)
-        .then(result => {
-            const loggedUser = result.user;
-            console.log(loggedUser);
-            toast.success(`${loggedUser.email} User Registration Successfully`);
-        }).catch(error => {
-            console.log(error);
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                toast.success(`${loggedUser.email} User Registration Successfully`);
+                profileUpdate(loggedUser, name, photo);
+                setUser(loggedUser);
+                navigate('/category/0');
+            }).catch(error => {
+                console.log(error);
+                toast.error(error.message);
+            })
+    }
+
+    const profileUpdate = (user, name, photo) => {
+        updateProfile(user, {
+            displayName: name, photoURL: photo
+          }).then(() => {
+            // Profile updated!
+            // ...
+            setReload(true);
+          }).catch((error) => {
             toast.error(error.message);
-        })
+          });
     }
 
     const handleEmail = (event) => {
@@ -90,7 +109,7 @@ const Register = () => {
             setPassError('Input at least one special character like !@#$%^&*');
         } else if (!/(?=.{8,})/.test(inputPass)) {
             setPassError('Input password length 8 characters');
-        }else {
+        } else {
             setPassError('');
         }
     }
@@ -110,11 +129,11 @@ const Register = () => {
             setErrorConf('Input at least one special character like !@#$%^&*');
         } else if (!/(?=.{8,})/.test(inputConfirm)) {
             setErrorConf('Input password length 8 characters');
-        } 
-        else if(password != inputConfirm) {
+        }
+        else if (password != inputConfirm) {
             setErrorConf('Password and Confirm Password Not Match');
-        } 
-        else if(password === inputConfirm) {
+        }
+        else if (password === inputConfirm) {
             setErrorConf('');
             setSuccessConf('Password Matched');
         }
@@ -124,6 +143,20 @@ const Register = () => {
         const checkAccept = event.target.checked;
         // console.log(checkAccept);
         setAccept(checkAccept)
+    }
+
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then(result => {
+                const logedUser = result.user;
+                // console.log(logedUser);
+                toast.success(`Login Successffuly`);
+                setUser(logedUser);
+                navigate('/category/0');
+            }).catch(error => {
+                // console.log(error);
+                toast.error(error.message);
+            })
     }
 
     return (
@@ -162,7 +195,7 @@ const Register = () => {
                 <Form.Text>
                     {<p className='text-success'>{successConf && successConf}</p>}
                     {<p className='text-danger'>{errorConf && errorConf}</p>}
-                </Form.Text> 
+                </Form.Text>
                 <Form.Group controlId="formBasicCheckbox">
                     <Form.Check onClick={() => setShow(!show)} type="checkbox" label="Show Password" />
                 </Form.Group>
@@ -170,16 +203,17 @@ const Register = () => {
                     <Form.Check onClick={handleTrams} type="checkbox" label={<>Accept <><Link to='/trams'>Trams and Condition</Link></></>} />
                 </Form.Group>
                 <Button className='w-100 mt-3' variant="primary" type="submit" disabled={!accept} >
-                    Submit
+                    নিবন্ধন করুন
                 </Button>
                 <Form.Text>
                     <p className='text-success'>{success}</p>
                     <p className='text-danger'>{error}</p>
                 </Form.Text>
-                <Form.Text>
-                    Alreday Have An Account ? <Link to='/login'>Login</Link>
-                </Form.Text>
             </Form>
+            <Button onClick={handleGoogleSignIn} className='my-2' variant="outline-dark w-100"><img style={{ height: '25px' }} src={googleIcon} alt="" /> গুগল দিয়ে নিবন্ধন করুন</Button>
+            <Form.Text>
+            ইতিমধ্যে একটি অ্যাকাউন্ট আছে? <Link to='/login'>লগইন করুন</Link>
+            </Form.Text>
         </div>
     );
 };

@@ -11,7 +11,7 @@ const NavigationBer = () => {
     const [categories, setCategories] = useState([]);
     // console.log(categories);
     const { user, logOut } = useContext(AuthContext);
-    // console.log(user);
+    console.log(user);
 
     const handleLogOut = () => {
         logOut()
@@ -42,7 +42,7 @@ const NavigationBer = () => {
                             
                         </Nav>
                         <Nav className='d-flex align-items-center'>
-                            {user && <Nav.Link href="#deets"><FaUserCircle style={{ fontSize: '40px' }} /></Nav.Link>}
+                            {user && <Nav.Link href="#deets"><img title={user?.displayName} src={user.photoURL} alt="" style={{ width: '40px', height: '40px', borderRadius: '50%' }} /></Nav.Link>}
                             <Nav.Link eventKey={2} href="#memes">
                                 {
                                     user ? <Button onClick={handleLogOut} variant="secondary">লগআউট</Button> : <Link to='/login'><Button variant="secondary">লগইন</Button></Link>

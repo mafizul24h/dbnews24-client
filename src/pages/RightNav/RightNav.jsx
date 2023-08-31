@@ -4,13 +4,31 @@ import { FaGoogle, FaFacebook, FaYoutube } from 'react-icons/fa';
 import QZone from '../QZone/QZone';
 import { Link } from 'react-router-dom';
 import googleIcon from './../../assets/icons/google-icon.png'
+import { useContext } from 'react';
+import { AuthContext } from '../../providers/AuthProvider';
+import { toast } from 'react-toastify';
 
 const RightNav = () => {
+    const { googleSignIn, setUser } = useContext(AuthContext);
+
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then(result => {
+                const logedUser = result.user;
+                // console.log(logedUser);
+                toast.success(`Login Successffuly`);
+                setUser(logedUser);
+            }).catch(error => {
+                // console.log(error);
+                toast.error(error.message);
+            })
+    }
+
     return (
         <div>
             <div>
                 <h4 className='fs-5 text-decoration-underline'>লগইন করুন</h4>
-                <Button className='my-2' variant="outline-dark w-100"><img style={{height: '25px'}} src={googleIcon} alt="" /> গুগল দিয়ে লগইন করুন</Button>
+                <Button onClick={handleGoogleSignIn} className='my-2' variant="outline-dark w-100"><img style={{ height: '25px' }} src={googleIcon} alt="" /> গুগল দিয়ে লগইন করুন</Button>
             </div>
             <div className='my-3'>
                 <h3 className='fs-5 text-decoration-underline'>আমাদের খুজে পাবেন</h3>
@@ -20,7 +38,7 @@ const RightNav = () => {
             <QZone />
             <div
                 className="bg-image p-5 text-center shadow-1-strong rounded mb-5 text-white"
-                style={{backgroundImage: `url('https://mdbcdn.b-cdn.net/img/new/slides/003.webp')`}} >
+                style={{ backgroundImage: `url('https://mdbcdn.b-cdn.net/img/new/slides/003.webp')` }} >
                 <h1 className="mb-3 h2">Jumbotron</h1>
                 <p>
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus praesentium

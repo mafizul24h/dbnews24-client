@@ -3,9 +3,10 @@ import { Button, Container, Form } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 import { toast } from 'react-toastify';
+import googleIcon from './../../assets/icons/google-icon.png'
 
 const Login = () => {
-    const { signIn } = useContext(AuthContext);
+    const { signIn, googleSignIn, setUser } = useContext(AuthContext);
     const [success, setSuccess] = useState();
     const [error, setError] = useState();
     const [show, setShow] = useState(true);
@@ -37,6 +38,7 @@ const Login = () => {
                 console.log(loggedUser);
                 toast.success(`${loggedUser.email} Login Successfully`);
                 event.target.reset();
+                setUser(loggedUser)
                 navigate(from, { replace: true });
             }).catch(error => {
                 console.log(error);
@@ -74,6 +76,20 @@ const Login = () => {
         }
     }
 
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then(result => {
+                const logedUser = result.user;
+                // console.log(logedUser);
+                toast.success(`Login Successffuly`);
+                setUser(logedUser);
+                navigate(from, { replace: true });
+            }).catch(error => {
+                // console.log(error);
+                toast.error(error.message);
+            })
+    }
+
     return (
         <Container>
             <div className='w-50 mx-auto my-5 px-5 rounded border'>
@@ -101,16 +117,17 @@ const Login = () => {
                             Forgot Password
                         </Button> <br />
                         <Button className='w-100' variant="primary" type="submit">
-                            Submit
+                            লগইন করুন
                         </Button>
                         <Form.Text>
                             <p className='text-success'>{success}</p>
                             <p className='text-danger'>{error}</p>
                         </Form.Text>
-                        <Form.Text>
-                            Dont Have An Account ? <Link to='/register'>Register</Link>
-                        </Form.Text>
                     </Form>
+                    <Button onClick={handleGoogleSignIn} className='my-2' variant="outline-dark w-100"><img style={{ height: '25px' }} src={googleIcon} alt="" /> গুগল দিয়ে লগইন করুন</Button>
+                    <Form.Text>
+                        একাউন্ট নেই? <Link to='/register'>নিবন্ধন করুন</Link>
+                    </Form.Text>
                 </div>
             </div>
         </Container>
