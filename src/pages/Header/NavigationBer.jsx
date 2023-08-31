@@ -21,7 +21,7 @@ const NavigationBer = () => {
     }
     
     useEffect(() => {
-        fetch('http://localhost:5000/categories')
+        fetch('https://dbnew24-server.vercel.app/categories')
             .then(res => res.json())
             .then(data => setCategories(data))
             .catch(error => console.log(error))
@@ -37,7 +37,7 @@ const NavigationBer = () => {
                         <Nav className="mx-auto">
 
                             {
-                               categories.map(category => <Link className='text-decoration-none me-2 btn btn-outline-secondary btn-sm' to={category.id}>{category.name}</Link>) 
+                               categories?.map(category => <Link className='text-decoration-none me-2 btn btn-outline-secondary btn-sm' to={category.id}>{category?.name}</Link>) 
                             }
                             
                         </Nav>

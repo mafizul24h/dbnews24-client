@@ -8,7 +8,7 @@
     top: 1rem;
     display: block !important;
     /* height: calc(100vh - 7rem); */
-    height: 50vh;
+    height: 40vh;
     /* overflow-y: auto; */
     overflow: auto;
 }
@@ -34,6 +34,6 @@
     padding: 10px;
 }
 
-@media only screen and (min-width: 576px) {
-
+.headline:hover {
+    text-decoration: underline;
 }

@@ -11,6 +11,8 @@ import PrivateRoute from "./PrivateRoute";
 import Trams from "../pages/Register/Trams";
 import Admin from "../adminPanel/Admin/Admin";
 import AddNews from "../adminPanel/AddNews/AddNews";
+import AllNews from "../adminPanel/AllNews/AllNews";
+import UpdateNews from "../adminPanel/UpdateNews/UpdateNews";
 
 const router = createBrowserRouter([
     {
@@ -43,7 +45,7 @@ const router = createBrowserRouter([
             {
                 path: ':id',
                 element: <Category />,
-                loader: ({ params }) => fetch(`http://localhost:5000/categories/${params.id}`)
+                loader: ({ params }) => fetch(`https://dbnew24-server.vercel.app/categories/${params.id}`)
             }
         ]
     },
@@ -54,7 +56,7 @@ const router = createBrowserRouter([
             {
                 path: ':id',
                 element: <News />,
-                loader: ({ params }) => fetch(`http://localhost:5000/news/${params.id}`)
+                loader: ({ params }) => fetch(`https://dbnew24-server.vercel.app/news/${params.id}`)
             }
         ]
     },
@@ -65,6 +67,16 @@ const router = createBrowserRouter([
             {
                 path: 'add-news',
                 element: <AddNews/>
+            },
+            {
+                path: 'all-news',
+                element: <AllNews/>,
+                loader: () => fetch('https://dbnew24-server.vercel.app/news')
+            },
+            {
+                path: 'update-news/:id',
+                element: <UpdateNews/>,
+                loader: ({params}) => fetch(`https://dbnew24-server.vercel.app/news/${params.id}`)
             }
         ]
     }

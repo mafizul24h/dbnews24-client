@@ -11,7 +11,7 @@ const AuthProvider = ({ children }) => {
     const [news, setNews] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/news')
+        fetch('https://dbnew24-server.vercel.app/news')
             .then(res => res.json())
             .then(data => {
                 setNews(data)

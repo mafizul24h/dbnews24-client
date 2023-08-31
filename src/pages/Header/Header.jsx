@@ -20,7 +20,7 @@ const Header = () => {
                 <Marquee pauseOnHover speed={40} className='bg-light py-2 text-danger'>
                     <div className='d-flex g-4'>
                         {
-                            news?.map(n => <p className='m-0 me-2' key={n._id}><Link className='text-decoration-none text-danger' to={`/news/${n._id}`}>{n.title}</Link> |</p> )
+                            news?.slice(0, 10).map(n => <p className='m-0 me-2' key={n._id}><Link className='text-decoration-none text-danger' to={`/news/${n._id}`}>{n.title}</Link> *</p> )
                         }
                     </div>
                 </Marquee>
