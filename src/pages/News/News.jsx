@@ -15,7 +15,7 @@ const News = () => {
         <div >
             <div className='mb-2'>
                 <button onClick={() => navigate(-1)} className='btn btn-outline-primary me-3'><FaArrowLeft /> ফিরে যাও</button>
-                <Link className='btn btn-outline-success' to='/category/0'><FaArrowLeft /> সব খবর</Link>
+                <Link className='btn btn-outline-success' to='/category/0'><FaArrowLeft /> সকল খবর</Link>
             </div>
             <Card >
                 <Card.Img variant="top" src={photo && photo} />

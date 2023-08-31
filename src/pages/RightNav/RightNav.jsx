@@ -1,28 +1,20 @@
 import React from 'react';
 import { Button, ListGroup } from 'react-bootstrap';
-import { FaGoogle, FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
+import { FaGoogle, FaFacebook, FaYoutube } from 'react-icons/fa';
 import QZone from '../QZone/QZone';
+import { Link } from 'react-router-dom';
 
 const RightNav = () => {
     return (
         <div>
             <div>
-                <h4>Login With</h4>
-                <Button className='my-2' variant="outline-secondary w-100"><FaGoogle /> Login With Google</Button>
-                <Button className='w-100' variant="outline-primary"><FaFacebook /> Login With Facebook</Button>
+                <h4 className='fs-5 text-decoration-underline'>লগইন করুন</h4>
+                <Button className='my-2' variant="outline-secondary w-100"><FaGoogle /> গুগল দিয়ে লগইন করুন</Button>
             </div>
             <div className='my-3'>
-                <h3>Find Us On</h3>
-                <ListGroup as="ul">
-                    <ListGroup.Item as="li" >
-                        <FaFacebook /> Facebook
-                    </ListGroup.Item>
-                    <ListGroup.Item as="li"><FaInstagram /> Instagram</ListGroup.Item>
-                    <ListGroup.Item as="li">
-                        <FaTwitter /> Twitter
-                    </ListGroup.Item>
-                    <ListGroup.Item as="li"><FaYoutube /> Youtube</ListGroup.Item>
-                </ListGroup>
+                <h3 className='fs-5 text-decoration-underline'>আমাদের খুজে পাবেন</h3>
+                <Link to='https://www.facebook.com/info.dbnews24?mibextid=ZbWKwL' className='my-2 btn btn-outline-primary w-100' ><FaFacebook /> ফেসবুক</Link>
+                <Link to='https://youtube.com/@dbnews24newsportal?si=CqPU4PPwuzY31sJ0' className='mb-2 btn btn-outline-danger w-100' ><FaYoutube /> ইউটিউব</Link>
             </div>
             <QZone />
             <div

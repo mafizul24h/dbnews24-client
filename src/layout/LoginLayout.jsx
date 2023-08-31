@@ -2,16 +2,17 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import NavigationBer from '../pages/Header/NavigationBer';
 import { Container } from 'react-bootstrap';
+import Footer from '../pages/Footer/Footer';
 
 const LoginLayout = () => {
     return (
-        <Container>
+        <div>
             {/* <NavigationBer /> */}
-            <div style={{minHeight: '80vh'}}>
+            <div style={{minHeight: '90vh'}}>
             <Outlet />
             </div>
-            <p className='text-center'><small>All Reserve In The Dragon News @ 2023</small></p>
-        </Container>
+            <Footer />
+        </div>
     );
 };
 
