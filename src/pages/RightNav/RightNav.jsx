@@ -3,13 +3,14 @@ import { Button, ListGroup } from 'react-bootstrap';
 import { FaGoogle, FaFacebook, FaYoutube } from 'react-icons/fa';
 import QZone from '../QZone/QZone';
 import { Link } from 'react-router-dom';
+import googleIcon from './../../assets/icons/google-icon.png'
 
 const RightNav = () => {
     return (
         <div>
             <div>
                 <h4 className='fs-5 text-decoration-underline'>লগইন করুন</h4>
-                <Button className='my-2' variant="outline-secondary w-100"><FaGoogle /> গুগল দিয়ে লগইন করুন</Button>
+                <Button className='my-2' variant="outline-dark w-100"><img style={{height: '25px'}} src={googleIcon} alt="" /> গুগল দিয়ে লগইন করুন</Button>
             </div>
             <div className='my-3'>
                 <h3 className='fs-5 text-decoration-underline'>আমাদের খুজে পাবেন</h3>

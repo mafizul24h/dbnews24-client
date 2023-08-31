@@ -45,7 +45,7 @@ const NavigationBer = () => {
                             {user && <Nav.Link href="#deets"><FaUserCircle style={{ fontSize: '40px' }} /></Nav.Link>}
                             <Nav.Link eventKey={2} href="#memes">
                                 {
-                                    user ? <Button onClick={handleLogOut} variant="secondary">Logout</Button> : <Link to='/login'><Button variant="secondary">Login</Button></Link>
+                                    user ? <Button onClick={handleLogOut} variant="secondary">লগআউট</Button> : <Link to='/login'><Button variant="secondary">লগইন</Button></Link>
                                 }
                             </Nav.Link>
                         </Nav>
