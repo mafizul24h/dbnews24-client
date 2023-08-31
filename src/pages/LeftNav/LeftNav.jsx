@@ -17,10 +17,10 @@ const LeftNav = () => {
 
     return (
         <div>
-            <button className='my-2 fw-bold btn btn-outline-secondary w-100'>শিরোনাম</button>
+            <button className='mb-2 fw-bold btn btn-outline-secondary w-100'>শিরোনাম</button>
             <div className='mb-4 overFlow'>
                 {
-                    news?.map(n => <p key={n._id} className='fw-bold headline'>
+                    news?.slice(0, 50).map(n => <p key={n._id} className='fw-bold headline'>
                         <small><Link to={`/news/${n._id}`} className='text-decoration-none text-dark '>{n.title}</Link></small>
                     </p>)
                 }

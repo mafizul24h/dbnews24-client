@@ -26,11 +26,13 @@ const AddNews = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                Swal.fire(
-                    'News Add!',
-                    'You clicked the button!',
-                    'success'
-                )
+                if (data.insertedId) {
+                    Swal.fire(
+                        'News Add!',
+                        'You clicked the button!',
+                        'success'
+                    )
+                }
             })
         event.target.reset();
     }

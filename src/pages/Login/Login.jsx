@@ -5,7 +5,7 @@ import { AuthContext } from '../../providers/AuthProvider';
 import { toast } from 'react-toastify';
 
 const Login = () => {
-    const {signIn} = useContext(AuthContext);
+    const { signIn } = useContext(AuthContext);
     const [success, setSuccess] = useState();
     const [error, setError] = useState();
     const [show, setShow] = useState(true);
@@ -32,16 +32,16 @@ const Login = () => {
         // console.log(email, password);
 
         signIn(email, password)
-        .then(result => {
-            const loggedUser = result.user;
-            console.log(loggedUser);
-            toast.success(`${loggedUser.email} Login Successfully`);
-            event.target.reset();
-            navigate(from, {replace: true});
-        }).catch(error => {
-            console.log(error);
-            toast.error(error.message);
-        })
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                toast.success(`${loggedUser.email} Login Successfully`);
+                event.target.reset();
+                navigate(from, { replace: true });
+            }).catch(error => {
+                console.log(error);
+                toast.error(error.message);
+            })
 
     }
 
@@ -75,40 +75,42 @@ const Login = () => {
     }
 
     return (
-        <div className='w-50 mx-auto my-4 px-5 py-3 rounded border'>
-            <h2 className='text-center my-3'>Login</h2>
-            <Form onSubmit={handleLogin}>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Your Email</Form.Label>
-                    <Form.Control value={email} onChange={handleEmail} name='email' type="email" placeholder="Enter Email" required />
-                </Form.Group>
-                <Form.Text>
-                    {<p className='text-danger'>{emailError && emailError}</p>}
-                </Form.Text>
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Your Password</Form.Label>
-                    <Form.Control value={password} onChange={handlePassword} name='password' type={show ? 'password' : 'text'} placeholder="Password" required />
-                </Form.Group>
-                <Form.Text>
-                    {<p className='text-danger'>{passError && passError}</p>}
-                </Form.Text>
-                <Form.Group controlId="formBasicCheckbox">
-                    <Form.Check onClick={() => setShow(!show)} type="checkbox" label="Show Password" />
-                </Form.Group>
-                <Button className='mb-2' variant="link">
-                    Forgot Password
-                </Button> <br />
-                <Button className='w-100' variant="primary" type="submit">
-                    Submit
-                </Button>
-                <Form.Text>
-                    <p className='text-success'>{success}</p>
-                    <p className='text-danger'>{error}</p>
-                </Form.Text>
-                <Form.Text>
-                    Dont Have An Account ? <Link to='/register'>Register</Link>
-                </Form.Text>
-            </Form>
+        <div style={{height: 'vh100'}}>
+            <div className='w-50 mx-auto my-4 px-5 rounded border'>
+                <h2 className='text-center my-3'>Login</h2>
+                <Form onSubmit={handleLogin}>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label>Your Email</Form.Label>
+                        <Form.Control value={email} onChange={handleEmail} name='email' type="email" placeholder="Enter Email" required />
+                    </Form.Group>
+                    <Form.Text>
+                        {<p className='text-danger'>{emailError && emailError}</p>}
+                    </Form.Text>
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Label>Your Password</Form.Label>
+                        <Form.Control value={password} onChange={handlePassword} name='password' type={show ? 'password' : 'text'} placeholder="Password" required />
+                    </Form.Group>
+                    <Form.Text>
+                        {<p className='text-danger'>{passError && passError}</p>}
+                    </Form.Text>
+                    <Form.Group controlId="formBasicCheckbox">
+                        <Form.Check onClick={() => setShow(!show)} type="checkbox" label="Show Password" />
+                    </Form.Group>
+                    <Button className='mb-2' variant="link">
+                        Forgot Password
+                    </Button> <br />
+                    <Button className='w-100' variant="primary" type="submit">
+                        Submit
+                    </Button>
+                    <Form.Text>
+                        <p className='text-success'>{success}</p>
+                        <p className='text-danger'>{error}</p>
+                    </Form.Text>
+                    <Form.Text>
+                        Dont Have An Account ? <Link to='/register'>Register</Link>
+                    </Form.Text>
+                </Form>
+            </div>
         </div>
     );
 };
