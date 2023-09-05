@@ -1,6 +1,5 @@
 {
-  "name": "the-news-dragon-client",
-  "homepage": "https://www.dbnews24.net/",
+  "name": "dbnews24",
   "private": true,
   "version": "0.0.0",
   "type": "module",
