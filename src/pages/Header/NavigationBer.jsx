@@ -13,14 +13,19 @@ const NavigationBer = () => {
     const { user, logOut } = useContext(AuthContext);
     console.log(user);
 
-
-
     useEffect(() => {
         fetch('https://dbnew24-server.vercel.app/categories')
             .then(res => res.json())
             .then(data => setCategories(data))
             .catch(error => console.log(error))
     }, [])
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                toast.success('Logout Successfully');
+            })
+    }
 
     return (
         <div >
@@ -38,7 +43,12 @@ const NavigationBer = () => {
                         </Nav>
                         <Nav className='d-flex align-items-center'>
                             <Nav.Link eventKey={2} href="#memes">
-                                
+                                <div className=' d-md-none'>
+                                    {user && <img title={user?.displayName} src={user.photoURL} alt="" style={{ width: '40px', height: '40px', borderRadius: '50%', marginRight: '10px' }} />}
+                                    {
+                                        user ? <Button onClick={handleLogOut} variant="secondary">লগআউট</Button> : <Link to='/login'><Button variant="secondary">লগইন</Button></Link>
+                                    }
+                                </div>
                             </Nav.Link>
                         </Nav>
                     </Navbar.Collapse>

@@ -35,7 +35,10 @@ const CardNews = ({ news }) => {
                     {read ? 
                     <><p className='m-0'> {details?.substring(0, 150)}...<span onClick={() => setRead(!read)} className='btn-link text-primary' style={{cursor:'pointer'}}>Read More</span> </p></>
                      : 
-                    <><p className='m-0'> {details && details}...<span onClick={() => setRead(!read)} className='btn-link text-primary' style={{cursor: 'pointer'}} >Read Less</span></p> </>
+                    <><p className='m-0'> {details && details}
+                    {/* ...<span onClick={() => setRead(!read)} className='btn-link text-primary' style={{cursor: 'pointer'}} >Read Less</span> */}
+                    </p>  
+                    </>
 
                     }
                 </Card.Text>

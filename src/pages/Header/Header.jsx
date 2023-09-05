@@ -7,7 +7,7 @@ import { AuthContext } from '../../providers/AuthProvider';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
-    const { news, user } = useContext(AuthContext);
+    const { news, user, logOut } = useContext(AuthContext);
 
     const handleLogOut = () => {
         logOut()
@@ -18,7 +18,7 @@ const Header = () => {
 
     return (
         <div>
-            <div className='container text-center text-dark my-2 d-flex justify-content-between align-items-end'>
+            <div className='container text-center text-dark my-2 d-md-flex justify-content-between align-items-end'>
                 <p className='m-0'><span className='fw-bold'>{moment().format('dddd, ')}</span>{moment().format('MMMM D, YYYY')}</p>
                 <img style={{ height: "50px" }} src={logo} alt="" />
                 <div className='d-none d-md-block'>

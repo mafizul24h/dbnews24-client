@@ -6,7 +6,7 @@ import { AuthContext } from '../../providers/AuthProvider';
 const Category = () => {
     const categoryNes = useLoaderData();
     const { news } = useContext(AuthContext);
-    const [categoryNews, setCategoryNews] = useState([]);
+    const [categoryNews, setCategoryNews] = useState(news);
     // console.log(news);
     // console.log(categoryNews);
 
