@@ -45,7 +45,7 @@ const CardNews = ({ news }) => {
             </Card.Body>
             <Card.Footer className='d-flex align-items-center'>
                 <div className='flex-grow-1 d-flex align-items-center gap-2'>
-                    <p className='mb-0'><small><b>রিপোর্টার:</b> {reporter}</small></p>
+                    <p className='mb-0'><small><b>রিপোর্টার:</b> {reporter && reporter}</small></p>
                     {/* <Rating style={{ maxWidth: 100 }} value={rating?.number} readOnly /> <span>{rating?.number}</span> */}
                 </div>
                 {/* <div className='flex-grow-1'>
@@ -59,7 +59,7 @@ const CardNews = ({ news }) => {
                     {rating?.number}
                 </div> */}
                 <div>
-                    <p className='m-0'><small><b>তারিখ:</b> {moment(publish_date).format('YYYY-MM-D')}</small></p>
+                    <p className='m-0'><small><b>তারিখ:</b> {moment(publish_date && publish_date).format('YYYY-MM-D')}</small></p>
                     {/* <FaEye className='me-2' /> {total_view} */}
                 </div>
             </Card.Footer>

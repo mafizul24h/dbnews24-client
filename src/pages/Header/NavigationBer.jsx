@@ -37,14 +37,14 @@ const NavigationBer = () => {
                         <Nav className="mx-auto">
 
                             {
-                                categories?.map(category => <Link className='text-decoration-none me-2 btn btn-outline-secondary btn-sm' to={category.id}>{category?.name}</Link>)
+                                categories?.map(category => <Link className='text-decoration-none me-2 btn btn-outline-secondary btn-sm' to={category?.id}>{category?.name}</Link>)
                             }
 
                         </Nav>
                         <Nav className='d-flex align-items-center'>
                             <Nav.Link eventKey={2} href="#memes">
                                 <div className=' d-md-none'>
-                                    {user && <img title={user?.displayName} src={user.photoURL} alt="" style={{ width: '40px', height: '40px', borderRadius: '50%', marginRight: '10px' }} />}
+                                    {user && <img title={user?.displayName} src={user?.photoURL} alt="" style={{ width: '40px', height: '40px', borderRadius: '50%', marginRight: '10px' }} />}
                                     {
                                         user ? <Button onClick={handleLogOut} variant="secondary">লগআউট</Button> : <Link to='/login'><Button variant="secondary">লগইন</Button></Link>
                                     }

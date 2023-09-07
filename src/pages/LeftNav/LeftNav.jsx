@@ -1,19 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import LeftCard from './LeftCard';
 import Marquee from "react-fast-marquee";
+import { AuthContext } from '../../providers/AuthProvider';
 
 const LeftNav = () => {
-    const [news, setNews] = useState([]);
-    // console.log(news[0]);
+    const {news} = useContext(AuthContext);
+    // const [news, setNews] = useState([]);
 
-    useEffect(() => {
-        fetch('https://dbnew24-server.vercel.app/news')
-            .then(res => res.json())
-            .then(data => setNews(data))
-            .catch(error => console.log(error))
-    }, [])
+    // useEffect(() => {
+    //     fetch('https://dbnew24-server.vercel.app/news')
+    //         .then(res => res.json())
+    //         .then(data => setNews(data))
+    //         .catch(error => console.log(error))
+    // }, [])
 
     return (
         <div>
